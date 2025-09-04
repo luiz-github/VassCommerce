@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("vassCommerce")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d51d5a91e42c264465c3e0aa1085febb8225b8e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("vassCommerce")]
 [assembly: System.Reflection.AssemblyTitleAttribute("vassCommerce")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -12,6 +12,8 @@ public class ClienteModel
     public Guid Id { get; init; }
     public string FotoUrl { get; set; }
     public DateTime DataNascimento { get; set; }
-
+    
     public EnderecoModel Endereco { get; set; }
+    public ICollection<CartaoModel> Cartao { get; set; }
+
 }
