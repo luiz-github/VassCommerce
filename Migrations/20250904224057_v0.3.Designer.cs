@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace vassCommerce.Migrations
 {
     [DbContext(typeof(VassCommerceDbContext))]
-    [Migration("20250904162615_initial")]
-    partial class initial
+    [Migration("20250904224057_v0.3")]
+    partial class v03
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,12 +35,7 @@ namespace vassCommerce.Migrations
                     b.Property<int>("Tipo")
                         .HasColumnType("INTEGER");
 
-                    b.Property<Guid>("TitularId")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TitularId");
 
                     b.ToTable("Cartao");
                 });
@@ -51,16 +46,11 @@ namespace vassCommerce.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("EstadoId")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EstadoId");
 
                     b.ToTable("Cidade");
                 });
@@ -74,11 +64,17 @@ namespace vassCommerce.Migrations
                     b.Property<DateTime>("DataNascimento")
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid>("EnderecoId")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("FotoUrl")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EnderecoId");
 
                     b.ToTable("Cliente");
                 });
@@ -91,20 +87,17 @@ namespace vassCommerce.Migrations
 
                     b.Property<string>("Bairro")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Cep")
                         .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("CidadeId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("ClienteId")
+                        .HasMaxLength(9)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Complemento")
                         .IsRequired()
+                        .HasMaxLength(8)
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DataCadastro")
@@ -118,18 +111,15 @@ namespace vassCommerce.Migrations
 
                     b.Property<string>("Rua")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Telefone")
                         .IsRequired()
+                        .HasMaxLength(14)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CidadeId");
-
-                    b.HasIndex("ClienteId")
-                        .IsUnique();
 
                     b.ToTable("Endereco");
                 });
@@ -153,56 +143,20 @@ namespace vassCommerce.Migrations
                     b.ToTable("Estado");
                 });
 
-            modelBuilder.Entity("Models.CartaoModel", b =>
+            modelBuilder.Entity("Models.ClienteModel", b =>
                 {
-                    b.HasOne("Models.ClienteModel", "Titular")
-                        .WithMany("Cartao")
-                        .HasForeignKey("TitularId")
+                    b.HasOne("Models.EnderecoModel", "Endereco")
+                        .WithMany("Clientes")
+                        .HasForeignKey("EnderecoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Titular");
-                });
-
-            modelBuilder.Entity("Models.CidadeModel", b =>
-                {
-                    b.HasOne("Models.EstadoModel", "Estado")
-                        .WithMany("Cidades")
-                        .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Estado");
+                    b.Navigation("Endereco");
                 });
 
             modelBuilder.Entity("Models.EnderecoModel", b =>
                 {
-                    b.HasOne("Models.CidadeModel", "Cidade")
-                        .WithMany()
-                        .HasForeignKey("CidadeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Models.ClienteModel", null)
-                        .WithOne("Endereco")
-                        .HasForeignKey("Models.EnderecoModel", "ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cidade");
-                });
-
-            modelBuilder.Entity("Models.ClienteModel", b =>
-                {
-                    b.Navigation("Cartao");
-
-                    b.Navigation("Endereco")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Models.EstadoModel", b =>
-                {
-                    b.Navigation("Cidades");
+                    b.Navigation("Clientes");
                 });
 #pragma warning restore 612, 618
         }

@@ -22,24 +22,9 @@ public class VassCommerceDbContext : DbContext
     {
         modelBuilder.Entity<ClienteModel>()
             .HasOne(c => c.Endereco)
-            .WithOne()
-            .HasForeignKey<EnderecoModel>(e => e.ClienteId);
-
-        modelBuilder.Entity<EnderecoModel>()
-            .HasOne(e => e.Cidade)
-            .WithMany()
-            .HasForeignKey("CidadeId");
-
-        modelBuilder.Entity<CidadeModel>()
-            .HasOne(c => c.Estado)
-            .WithMany(e => e.Cidades)
-            .HasForeignKey(c => c.EstadoId)
-            .OnDelete(DeleteBehavior.Restrict);
-
-        modelBuilder.Entity<CartaoModel>()
-            .HasOne(c => c.Titular)
-            .WithMany(c => c.Cartao)
-            .HasForeignKey("TitularId");
+            .WithOne(e => e.Cliente)
+            .HasForeignKey<EnderecoModel>(e => e.ClienteId)
+            .OnDelete(DeleteBehavior.Cascade); 
     }
 
 }

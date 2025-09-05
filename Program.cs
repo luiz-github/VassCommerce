@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
 builder.Services.AddDbContext<VassCommerceDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -17,6 +18,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.ClienteRoutes();
+
+app.MapControllers();
 
 app.UseHttpsRedirection();
 app.Run();

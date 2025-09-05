@@ -14,9 +14,6 @@ public class CartaoModel
     public DateTime DataCriacao { get; init; }
     public bool Excluido { get; init; }
     public TipoCartao Tipo { get; set; }
-
-    public Guid TitularId { get; set; }
-    public ClienteModel Titular { get; set; }
 }
 
 public enum TipoCartao

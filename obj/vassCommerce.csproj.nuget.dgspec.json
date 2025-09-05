@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/mnt/c/Users/luiz.drilard/Desktop/projects/dotnet_api/vassCommerce/vassCommerce.csproj": {}
+    "C:\\Users\\Drilard\\RiderProjects\\VassCommerce\\vassCommerce.csproj": {}
   },
   "projects": {
-    "/mnt/c/Users/luiz.drilard/Desktop/projects/dotnet_api/vassCommerce/vassCommerce.csproj": {
+    "C:\\Users\\Drilard\\RiderProjects\\VassCommerce\\vassCommerce.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/mnt/c/Users/luiz.drilard/Desktop/projects/dotnet_api/vassCommerce/vassCommerce.csproj",
+        "projectUniqueName": "C:\\Users\\Drilard\\RiderProjects\\VassCommerce\\vassCommerce.csproj",
         "projectName": "vassCommerce",
-        "projectPath": "/mnt/c/Users/luiz.drilard/Desktop/projects/dotnet_api/vassCommerce/vassCommerce.csproj",
-        "packagesPath": "/home/luizdrilard/.nuget/packages/",
-        "outputPath": "/mnt/c/Users/luiz.drilard/Desktop/projects/dotnet_api/vassCommerce/obj/",
+        "projectPath": "C:\\Users\\Drilard\\RiderProjects\\VassCommerce\\vassCommerce.csproj",
+        "packagesPath": "C:\\Users\\Drilard\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Drilard\\RiderProjects\\VassCommerce\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/luizdrilard/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Drilard\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -82,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.119/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.413/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

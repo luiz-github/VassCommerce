@@ -10,7 +10,4 @@ public class CidadeModel
 
     public Guid Id { get; init; }
     public string Nome { get; set; }
-
-    public Guid EstadoId { get; set; }
-    public EstadoModel Estado { get; set; }
 }
