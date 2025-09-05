@@ -1,4 +1,7 @@
+using Models;
+
 namespace Dtos;
+
 public class CreateEnderecoDto
 {
     public string Rua { get; set; }
@@ -7,9 +10,10 @@ public class CreateEnderecoDto
     public string Complemento { get; set; }
     public string Telefone { get; set; }
     public string Bairro { get; set; }
+    public int CidadeId { get; set; }
 }
 
 public class GetEnderecoByIdDto
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
 }

@@ -24,7 +24,18 @@ public class VassCommerceDbContext : DbContext
             .HasOne(c => c.Endereco)
             .WithOne(e => e.Cliente)
             .HasForeignKey<EnderecoModel>(e => e.ClienteId)
-            .OnDelete(DeleteBehavior.Cascade); 
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<CidadeModel>()
+            .HasMany(c => c.Enderecos)
+            .WithOne(e => e.Cidade)
+            .HasForeignKey(e => e.CidadeId)
+            .IsRequired();
+
+        modelBuilder.Entity<EstadoModel>()
+            .HasMany(e => e.Cidades)
+            .WithOne(c => c.Estado)
+            .HasForeignKey(c => c.EstadoId);
     }
 
 }

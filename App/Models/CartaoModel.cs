@@ -4,13 +4,12 @@ public class CartaoModel
 {
     public CartaoModel(TipoCartao tipo)
     {
-        Id = Guid.NewGuid();
         DataCriacao = DateTime.UtcNow;
         Excluido = false;
         Tipo = tipo;
     }
 
-    public Guid Id { get; init; }
+    public int Id { get; init; }
     public DateTime DataCriacao { get; init; }
     public bool Excluido { get; init; }
     public TipoCartao Tipo { get; set; }

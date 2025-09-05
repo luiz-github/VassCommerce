@@ -3,6 +3,7 @@ using System;
 using DataSource.VassCommerceDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace vassCommerce.Migrations
 {
     [DbContext(typeof(VassCommerceDbContext))]
-    partial class VassCommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250905144526_v0.9")]
+    partial class v09
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.8");
@@ -43,16 +46,11 @@ namespace vassCommerce.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("EstadoId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EstadoId");
 
                     b.ToTable("Cidade");
                 });
@@ -156,17 +154,6 @@ namespace vassCommerce.Migrations
                     b.ToTable("Estado");
                 });
 
-            modelBuilder.Entity("Models.CidadeModel", b =>
-                {
-                    b.HasOne("Models.EstadoModel", "Estado")
-                        .WithMany("Cidades")
-                        .HasForeignKey("EstadoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Estado");
-                });
-
             modelBuilder.Entity("Models.EnderecoModel", b =>
                 {
                     b.HasOne("Models.CidadeModel", "Cidade")
@@ -194,11 +181,6 @@ namespace vassCommerce.Migrations
             modelBuilder.Entity("Models.ClienteModel", b =>
                 {
                     b.Navigation("Endereco");
-                });
-
-            modelBuilder.Entity("Models.EstadoModel", b =>
-                {
-                    b.Navigation("Cidades");
                 });
 #pragma warning restore 612, 618
         }
