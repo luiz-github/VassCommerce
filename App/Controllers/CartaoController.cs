@@ -44,6 +44,20 @@ public class CartaoController : ControllerBase
         return Ok(ApiResponseHelper.Success("Forma de pagamento cadastrado"));
     }
 
+    [HttpPut("{idcliente}/formas-de-pagamento/{idformapagamento}")]
+    public async Task<ActionResult<object>> UpdateFormaPagamento(int idcliente, int idformapagamento, CartaoDto req)
+    {
+        var cliente = await _context.Cliente
+            .FirstOrDefaultAsync(c => c.Id == idcliente);
+        if (cliente == null) return NotFound(ApiResponseHelper.Error(404, "Cliente não encontrado"));
+        var formaDePagamento = await _context.Cartao
+            .FirstOrDefaultAsync(c => c.TitularId == idcliente && c.Id == idformapagamento);
+        if (formaDePagamento == null) return NotFound(ApiResponseHelper.Error(404, "Forma de pagamento não encontrada"));
+        formaDePagamento.Tipo = req.Tipo;
+        await _context.SaveChangesAsync();
+        return Ok(ApiResponseHelper.Success("Forma de pagamento atualizado"));
+    }
+
     [HttpDelete("{idcliente}/formas-de-pagamento/{idformapagamento}")]
     public async Task<ActionResult<object>> DeleteFormaPagamento(int idcliente, int idformapagamento)
     {
