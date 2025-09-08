@@ -21,11 +21,11 @@ public class EnderecoModel
     [MaxLength(100)]
     public string Rua { get; set; }
     public int Numero { get; set; }
-    [MaxLength(9)]
+    [MaxLength(8)]
     public string Cep { get; set; }
     [MaxLength(8)]
     public string Complemento { get; set; }
-    [MaxLength(14)]
+    [MaxLength(11)]
     public string Telefone { get; set; }
     [MaxLength(100)]
     public string Bairro { get; set; }

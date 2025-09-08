@@ -20,7 +20,8 @@ public class EstadoController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<object>> GetEstados()
     {
-        var estados = await _context.Estado.ToListAsync();
+        var estados = await _context.Estado
+            .ToListAsync();
         return Ok(ApiResponseHelper.Success("Estados encontrados", estados));
     }
 

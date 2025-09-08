@@ -19,4 +19,6 @@ public class ClienteModel
     [MaxLength(11)]
     public string Cpf { get; set; }
     public EnderecoModel? Endereco { get; set; }
+    public ICollection<CartaoModel> FormasDePagamento { get; set; } =
+        new List<CartaoModel>();
 }
