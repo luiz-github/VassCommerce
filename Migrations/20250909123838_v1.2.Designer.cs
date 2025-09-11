@@ -3,6 +3,7 @@ using System;
 using DataSource.VassCommerceDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,27 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace vassCommerce.Migrations
 {
     [DbContext(typeof(VassCommerceDbContext))]
-    partial class VassCommerceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250909123838_v1.2")]
+    partial class v12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.8");
-
-            modelBuilder.Entity("CategoriaModelProdutoModel", b =>
-                {
-                    b.Property<int>("CategoriasId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ProdutosId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("CategoriasId", "ProdutosId");
-
-                    b.HasIndex("ProdutosId");
-
-                    b.ToTable("CategoriaModelProdutoModel");
-                });
 
             modelBuilder.Entity("Models.CartaoModel", b =>
                 {
@@ -202,13 +190,10 @@ namespace vassCommerce.Migrations
                     b.ToTable("Estado");
                 });
 
-            modelBuilder.Entity("Models.PedidoModel", b =>
+            modelBuilder.Entity("PedidoModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("ClienteId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DataCadastro")
@@ -222,56 +207,7 @@ namespace vassCommerce.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClienteId");
-
                     b.ToTable("Pedido");
-                });
-
-            modelBuilder.Entity("Models.ProdutoModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DataUltimaAtualizacao")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FotoUrl")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<float>("ValorUnitario")
-                        .HasColumnType("REAL");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Produto");
-                });
-
-            modelBuilder.Entity("CategoriaModelProdutoModel", b =>
-                {
-                    b.HasOne("Models.CategoriaModel", null)
-                        .WithMany()
-                        .HasForeignKey("CategoriasId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Models.ProdutoModel", null)
-                        .WithMany()
-                        .HasForeignKey("ProdutosId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Models.CartaoModel", b =>
@@ -315,17 +251,6 @@ namespace vassCommerce.Migrations
                     b.Navigation("Cliente");
                 });
 
-            modelBuilder.Entity("Models.PedidoModel", b =>
-                {
-                    b.HasOne("Models.ClienteModel", "Cliente")
-                        .WithMany("Pedidos")
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
-                });
-
             modelBuilder.Entity("Models.CidadeModel", b =>
                 {
                     b.Navigation("Enderecos");
@@ -336,8 +261,6 @@ namespace vassCommerce.Migrations
                     b.Navigation("Endereco");
 
                     b.Navigation("FormasDePagamento");
-
-                    b.Navigation("Pedidos");
                 });
 
             modelBuilder.Entity("Models.EstadoModel", b =>

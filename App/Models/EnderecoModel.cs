@@ -14,7 +14,7 @@ public class EnderecoModel
         Telefone = telefone;
         Bairro = bairro;
         DataUltimaAtualizacao = dataUltimaAtualizacao;
-        DataCadastro = DateTime.UtcNow;
+        DataCadastro = DateTime.Now;
     }
 
     public int Id { get; init; }

@@ -37,7 +37,6 @@ public class CartaoController : ControllerBase
         var cartao = new CartaoModel(req.Tipo)
         {
             Titular = cliente,
-            TitularId = cliente.Id
         };
         _context.Cartao.AddAsync(cartao);
         await _context.SaveChangesAsync();

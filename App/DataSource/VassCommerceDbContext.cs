@@ -6,6 +6,8 @@ namespace DataSource.VassCommerceDbContext;
 public class VassCommerceDbContext : DbContext
 {
     public DbSet<CategoriaModel> Categoria { get; set; }
+    public DbSet<ProdutoModel> Produto { get; set; }
+    public DbSet<PedidoModel> Pedido { get; set; }
     public DbSet<EstadoModel> Estado { get; set; }
     public DbSet<CidadeModel> Cidade { get; set; }
     public DbSet<EnderecoModel> Endereco { get; set; }
@@ -42,6 +44,14 @@ public class VassCommerceDbContext : DbContext
             .HasMany(c => c.FormasDePagamento)
             .WithOne(c => c.Titular)
             .HasForeignKey(c => c.TitularId);
-    }
 
+        modelBuilder.Entity<ClienteModel>()
+            .HasMany(c => c.Pedidos)
+            .WithOne(p => p.Cliente)
+            .HasForeignKey(p => p.ClienteId);
+
+        modelBuilder.Entity<ProdutoModel>()
+            .HasMany(p => p.Categorias)
+            .WithMany(c => c.Produtos);
+    }
 }

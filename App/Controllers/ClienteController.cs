@@ -22,8 +22,8 @@ public class ClienteController : ControllerBase
     {
         var cliente = await _context.Cliente
             .Include(c => c.Endereco)
-            .ThenInclude(e => e.Cidade)
-            .ThenInclude(c => c.Estado)
+                .ThenInclude(e => e.Cidade)
+                    .ThenInclude(c => c.Estado)
             .FirstOrDefaultAsync(c => c.Id == id);
         if (cliente == null) return NotFound(ApiResponseHelper.Error(404, "Cliente não encontrado"));
         return Ok(ApiResponseHelper.Success("Cliente encontrado", cliente));

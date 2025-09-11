@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Models;
 
@@ -17,4 +18,5 @@ public class CategoriaModel
     public string Nome { get; set; }
     [MaxLength(100)]
     public string Descricao { get; set; }
+    public ICollection<ProdutoModel> Produtos { get; set; } = null!;
 }

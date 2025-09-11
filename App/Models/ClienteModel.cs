@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace Models;
 
@@ -21,4 +20,6 @@ public class ClienteModel
     public EnderecoModel? Endereco { get; set; }
     public ICollection<CartaoModel> FormasDePagamento { get; set; } =
         new List<CartaoModel>();
+    public ICollection<PedidoModel> Pedidos { get; set; } =
+        new List<PedidoModel>();
 }

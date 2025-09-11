@@ -5,7 +5,7 @@ public class CartaoModel
 {
     public CartaoModel(TipoCartao tipo)
     {
-        DataCriacao = DateTime.UtcNow;
+        DataCriacao = DateTime.Now;
         Excluido = false;
         Tipo = tipo;
     }

@@ -1,7 +1,7 @@
 using Models;
 using System.ComponentModel.DataAnnotations;
-namespace Dtos;
 
+namespace Dtos;
 public class CreateEnderecoDto
 {
     [Required(ErrorMessage = "Rua é obrigatório")]
