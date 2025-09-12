@@ -17,6 +17,8 @@ public class PedidoModel
     public int ClienteId { get; set; }
     [JsonIgnore]
     public ClienteModel Cliente { get; set; }
+
+    public List<ItemPedido> ItensPedido { get; set; }
 }
 
 public enum PedidoStatus
@@ -25,4 +27,11 @@ public enum PedidoStatus
     SEPARANDO_ESTOQUE = 2,
     ENTREGUE_TRANSPORTADORA = 3,
     ENTREGUE_CLIENTE = 4
+}
+
+public class ItemPedido
+{
+    public int Id { get; set; }
+    public int Quantidade { get; set; }
+    public float ValorUnitario { get; set; }
 }

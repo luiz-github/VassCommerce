@@ -4,9 +4,21 @@ namespace Models;
 
 public class ProdutoModel
 {
-    public ProdutoModel()
+    public ProdutoModel
+    (
+        string nome,
+        string descricao,
+        string fotoUrl,
+        DateTime dataUltimaAtualizacao,
+        float valorUnitario
+    )
     {
+        Nome = nome;
+        Descricao = descricao;
+        FotoUrl = fotoUrl;
         DataCadastro = DateTime.Now;
+        DataUltimaAtualizacao = dataUltimaAtualizacao;
+        ValorUnitario = valorUnitario;
     }
 
     public int Id { get; init; }

@@ -29,7 +29,7 @@ public class CartaoController : ControllerBase
     }
 
     [HttpPost("{idcliente}/formas-de-pagamento")]
-    public async Task<ActionResult<object>> CreateFormaPagamento(int idcliente, CartaoDto req)
+    public async Task<ActionResult<object>> CreateFormaPagamento(int idcliente, CreateCartaoDto req)
     {
         var cliente = await _context.Cliente
             .FirstOrDefaultAsync(c => c.Id == idcliente);
@@ -44,7 +44,7 @@ public class CartaoController : ControllerBase
     }
 
     [HttpPut("{idcliente}/formas-de-pagamento/{idformapagamento}")]
-    public async Task<ActionResult<object>> UpdateFormaPagamento(int idcliente, int idformapagamento, CartaoDto req)
+    public async Task<ActionResult<object>> UpdateFormaPagamento(int idcliente, int idformapagamento, CreateCartaoDto req)
     {
         var cliente = await _context.Cliente
             .FirstOrDefaultAsync(c => c.Id == idcliente);
